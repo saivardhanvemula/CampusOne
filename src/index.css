@@ -1,0 +1,17 @@
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%; /* Ensure #root takes up full width */
+  height: 100%;
+}

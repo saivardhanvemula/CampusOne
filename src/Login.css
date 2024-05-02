@@ -1,0 +1,25 @@
+
+.login-page {
+    background-image: url("./assets/bg.jpg");
+    height: 100vh; /* Set height to full viewport height */
+    width: 100vw; /* Set width to full viewport width */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Use 'cover' to ensure the background image covers the entire element */
+    filter:brightness(0.8) saturate(120%) opacity(0.9);
+}
+ 
+.form button,.form input{
+    background: transparent;
+}
+.form{
+    background-color: red;
+    height: 400px;
+    width: clamp(400px,50%,600px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
