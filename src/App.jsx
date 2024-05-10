@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import LoginPage from "./Login";
 import { Homepage } from "./Homepage";
 
@@ -10,9 +11,16 @@ function App() {
     //     { path: "/home", element: <home /> },
     // ]);
     return (
-        <>
-            <Homepage/>
-        </>
+        // <>
+        //     <Homepage/>
+        //     {/* <LoginPage/> */}
+        // </>
+        <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<LoginPage/>} />
+              <Route path="/home" element={<Homepage />} />
+            </Routes>
+      </BrowserRouter>
     );
 }
 

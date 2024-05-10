@@ -23,6 +23,10 @@ const LoginPage = () => {
             const response = await fetch("./services/server/data");
             // console.log(response.data);
             console.log("Login successful!", response);
+            setTimeout(() => {
+                // console.log("Login successful!");
+                history.push("/home"); // Redirect to home page after successful login
+            }, 1000);
             
         } catch (error) {
             setErrorMessage("Invalid username or password");
