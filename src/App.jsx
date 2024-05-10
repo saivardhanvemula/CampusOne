@@ -1,13 +1,19 @@
-import { useState } from 'react'
-import Login from './Login'
-import './App.css'
+import React from "react";
+import "./App.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import LoginPage from "./Login";
+import { Homepage } from "./Homepage";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <Login/>
-  )
+    // const router = createBrowserRouter([
+    //     { path: "/", element: <LoginPage /> },
+    //     { path: "/home", element: <home /> },
+    // ]);
+    return (
+        <>
+            <Homepage/>
+        </>
+    );
 }
 
-export default App
+export default App;

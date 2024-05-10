@@ -1,69 +1,81 @@
-// import React,{useEffect} from 'react'
-// import bg from "./assets/bg.jpg"
-// import userImg from "./assets/userID.svg"
-// import passImg from "./assets/password.svg"
+import React, { useState } from "react";
+import "./Login.css";
+import axios from "axios";
 
-// function Login() {
-  //   return (
-    //     <div className='LogInPage' style={{backgroundImage:`url(${bg})`}}>
-    //         <form className="LoginForm">
-    //         <div className="LoginForm">
-    //             <div className="userId">
-    //                 <img src={userImg} alt="" className="userImg" />
-    //                 <input type="text" name="userId" id="UserId" placeholder='Enter your ID' autoComplete='username'/>
-    //             </div>
-    //             <div className="pass">
-    //                 <img src={passImg} alt="" className="passImg" />
-    //                 <input type="password" name="pass" id="pass" placeholder='Enter your Password' autoComplete='current-password'/>
-    //                 </div>
-    //                 <button type="submit">Submit</button>
-    //         </div>
-    //         </form>
-    //     </div>
-    //   )
-    // }
-    
-    // export default Login
-    import React, { useState } from "react";
-    import "./Login.css"
+import userImg from "./assets/userID.svg";
+import passImg from "./assets/password.svg";
+import visoff from './assets/visibility_off.svg'
+import vison from './assets/visibility_on.svg'
 
 const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
-    const handleLogin = () => {
-        // You can add your authentication logic here
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const handleLogin = async (event) => {
+        if (username.trim() === "" || password.trim() === "") {
+            setErrorMessage("Please enter the details");
+            return;
+        }
+        try {
+            const response = await fetch("./services/server/data");
+            // console.log(response.data);
+            console.log("Login successful!", response);
+            
+        } catch (error) {
+            setErrorMessage("Invalid username or password");
+        }
         console.log("Logging in with:", username, password);
-        // For simplicity, let's just clear the fields after logging in
         setUsername("");
         setPassword("");
     };
-
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
     return (
         <div className="login-page">
-          <div className="form">
-            <h2>Login Page</h2>
-            <form>
-                <div>
-                    <label>Username:</label>
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button type="button" onClick={handleLogin}>
-                    Login
-                </button>
-            </form>
+            <div className="form">
+                <h2>CampusOne</h2>
+                <form>
+                    {errorMessage && (
+                        <p className="error-message">{errorMessage}</p>
+                    )}
+                    <div className="userinput">
+                        <label>
+                            <img src={userImg} alt="" />
+                        </label>
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            autoComplete="current-userid"
+                        />
+                    </div>
+                    <div className="passinput">
+                        <label>
+                            {" "}
+                            <img src={passImg} alt="" />
+                        </label>
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            autoComplete="password"
+                        />
+                        <span
+                        
+                            onClick={togglePasswordVisibility}
+                            className="showpass"
+                        >
+                            <img src={showPassword ? visoff : vison} alt="" />
+                        </span>
+                    </div>
+                    <button  type="button" onClick={handleLogin}>
+                        Login
+                    </button>
+                </form>
             </div>
         </div>
     );
