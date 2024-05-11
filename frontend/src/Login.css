@@ -79,3 +79,15 @@ form p {
     height: 20px;
     width: 20px;
 }
+.admin-text p{
+    color: white;
+    cursor: pointer;
+}
+.title p{
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+}
+.userinput input{
+    margin-right: 55px;
+}

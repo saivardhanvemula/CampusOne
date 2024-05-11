@@ -5,44 +5,43 @@ import axios from "axios";
 
 import userImg from "./assets/userID.svg";
 import passImg from "./assets/password.svg";
-import visoff from './assets/visibility_off.svg'
-import vison from './assets/visibility_on.svg'
+import visoff from "./assets/visibility_off.svg";
+import vison from "./assets/visibility_on.svg";
 
 const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [admin, setAdmin] = useState(false);
 
     const [errorMessage, setErrorMessage] = useState(null);
 
     const handleLogin = async (event) => {
+        event.preventDefault();
         if (username.trim() === "" || password.trim() === "") {
             setErrorMessage("Please enter the details");
             return;
         }
-        try {
-            const response = await fetch("./services/server/data");
-            // console.log(response.data);
-            console.log("Login successful!", response);
-            setTimeout(() => {
-                // console.log("Login successful!");
-                history.push("/home"); // Redirect to home page after successful login
-            }, 1000);
-            
-        } catch (error) {
-            setErrorMessage("Invalid username or password");
+        const history = useHistory();
+        if (admin) {
+            history.push("/admin");
+        } else {
+            history.push("/home");
         }
-        console.log("Logging in with:", username, password);
-        setUsername("");
-        setPassword("");
     };
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
+    };
+    const handleAdminClick = () => {
+        setAdmin(!admin);
     };
     return (
         <div className="login-page">
             <div className="form">
                 <h2>CampusOne</h2>
+                <span className="title">
+                    {admin ? <p>Admin Login</p> : <p>Student Login</p>}
+                </span>
                 <form>
                     {errorMessage && (
                         <p className="error-message">{errorMessage}</p>
@@ -70,18 +69,22 @@ const LoginPage = () => {
                             autoComplete="password"
                         />
                         <span
-                        
                             onClick={togglePasswordVisibility}
                             className="showpass"
                         >
                             <img src={showPassword ? visoff : vison} alt="" />
                         </span>
                     </div>
-                    <Link to="/home">
-                        <button type="submit" onClick={handleLogin}>
-                            Login
-                        </button>
-                    </Link>
+                    <p className="admin-text" onClick={handleAdminClick}>
+                        {admin ? (
+                            <p>are you a student ?</p>
+                        ) : (
+                            <p>are you a admin ?</p>
+                        )}
+                    </p>
+                    <button type="submit" onClick={handleLogin}>
+                        Login
+                    </button>
                     {/* <button  type="button" onClick={handleLogin}>
                         Login
                     </button> */}
