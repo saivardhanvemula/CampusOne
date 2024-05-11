@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Login.css";
 import axios from "axios";
 
@@ -76,9 +77,14 @@ const LoginPage = () => {
                             <img src={showPassword ? visoff : vison} alt="" />
                         </span>
                     </div>
-                    <button  type="button" onClick={handleLogin}>
+                    <Link to="/home">
+                        <button type="submit" onClick={handleLogin}>
+                            Login
+                        </button>
+                    </Link>
+                    {/* <button  type="button" onClick={handleLogin}>
                         Login
-                    </button>
+                    </button> */}
                 </form>
             </div>
         </div>
