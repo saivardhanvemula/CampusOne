@@ -1,22 +1,29 @@
-import { React, useState, useEffect } from "react";
-import AttendanceChart from "./AttendanceChart";
-import AbsentLog from "./AbsentLog";
-import DonutChart from "./DonutChart";
-import NotesDownloader from "./DownloadNotes";
+import { React, useState, useEffect, useContext } from "react";
+import AttendanceChart from "./components/AttendanceChart";
+import AbsentLog from "./components/AbsentLog";
+import DonutChart from "./components/DonutChart";
+import NotesDownloader from "./components/DownloadNotes";
+
+import UserContext from "./UserContext";
+
 import "./Homepage.css";
 export const Homepage = () => {
+    const { UserData, setUserData } = useContext(UserContext);
+
     const [percentage, setPercentage] = useState(0);
-    // const [warningMessage, setwarningMessage] = useState("");
-    // const [textColor, settextColor] = useState("");
+    console.log(UserData);
+    if (!UserData) {
+        return <div>Loading...</div>;
+    }
 
     useEffect(() => {
         setPercentage(
-            (student.attendance.presentCount /
-                (student.attendance.presentCount +
-                    student.attendance.absentCount)) *
+            (UserData.attendance.presentCount /
+                (UserData.attendance.presentCount +
+                    UserData.attendance.absentCount)) *
                 100
         );
-        console.log(percentage);
+        console.log(percentage, UserData);
     }, []);
     let warningMessage = "";
     let textColor = "";
@@ -31,32 +38,17 @@ export const Homepage = () => {
         warningMessage = "You are going to detain.";
         textColor = "red";
     }
-
-    const student = {
-        name: "Krishna Anirudh",
-        rollNumber: "123456878",
-        attendance: {
-            presentCount: 80,
-            absentCount: 20,
-        },
-        absenceLog: [
-            { date: "2024-05-01", subjects: ["Maths", "Science"] },
-            { date: "2024-05-03", subjects: ["History"] },
-            { date: "2024-05-05", subjects: ["Maths", "Science", "History"] },
-        ],
-    };
-
     return (
         <div className="DashBoard">
             <div className="details">
-                <h2>Name:{student.name}</h2>
-                <p>{student.rollNumber}</p>
+                <h2>Name:{UserData.name}</h2>
+                <p>RollNo :{UserData.rollNumber}</p>
             </div>
             <div className="attendance">Your attendance is {percentage} %</div>
             <p style={{ color: textColor }} className="warning">
                 {warningMessage}
             </p>
-            <AbsentLog data={student.absenceLog} />
+            <AbsentLog data={UserData.absenceLog} />
             {/* <AttendanceChart data={student.attendance}/> */}
             {/* <DonutChart data={[student.attendance.presentCount, student.attendance.absentCount]} /> */}
             <NotesDownloader />
