@@ -36,21 +36,29 @@ const NotesDownloader = () => {
                 date,
                 subject,
             });
-            const data = response.data.notes[0];
-            console.log(data)
-            const newWindow = window.open(
-                data[subject],
-                "_blank"
-            );
-            if (newWindow) {
-                newWindow.focus();
-            } else {
-                console.error(
-                    "Failed to open the new tab. Please check your browser settings."
-                );
+            
+            const sub = Object.keys(response.data.notes).splice(2,);
+            console.log(sub)
+            console.log(subject)
+            const data = response.data.notes[subject];
+            // console.log(data);
+            if (sub.includes(subject)){
+
+                const newWindow = window.open(data, "_blank");
+                if (newWindow) {
+                    newWindow.focus();
+                } else {
+                    console.error(
+                        "Failed to open the new tab. Please check your browser settings."
+                    );
+                }
+            }
+            else{
+                alert(`${subject} notes on ${date} is not available`)
             }
         } catch (error) {
-            console.error("Error fetching data:", error);
+            alert(`${subject} notes on ${date} is not available`)
+            // console.error("Error fetching data:", error);
             // res.status(500).json({ error: "Server error" });
         }
     };

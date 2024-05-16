@@ -1,0 +1,27 @@
+.list{
+    background-color: antiquewhite;
+    height: 25vh;
+    min-height: 200px;
+    width: 50vw;
+    box-shadow: 0px 0px 3px black inset;
+    border-radius: 3px;
+    padding: 10px;
+    padding-top: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom:10px ;
+}
+.nums{
+    background-color: white;
+    height: 20px;
+    padding: 6px;
+    margin: 4px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.absent{
+    background-color: red;
+    color: black;
+    /* animation: 6s ease-in; */
+}
