@@ -28,12 +28,17 @@ const LoginPage = () => {
             const response = await axios.post("http://localhost:5000/login", {
                 email,
                 password,
+                admin,
             });
             const data = response.data.user;
             setUserData(data);
             if (UserData!={}) {
                 console.log("Login succesful!");
-                navigate("/home", { state: { userData: response.data } });
+                if(admin){
+                    navigate("/admin", { state: { userData: response.data } });
+                }else{
+                    navigate("/home", { state: { userData: response.data } });
+                }
             } else {
                 setErrorMessage("Invalid credentials. Please try again.");
             }

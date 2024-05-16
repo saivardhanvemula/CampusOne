@@ -9,16 +9,16 @@ function App() {
     const [UserData, setUserData] = useState({});
 
     return (
-        <AdminPage/>
-        // <UserContext.Provider value={{ UserData , setUserData }}>
-        //     <BrowserRouter>
-        //         <Routes>
-        //             <Route path="/" element={<LoginPage />} />
-        //             <Route path="/home" element={<Homepage/>} />
-        //             <Route path="/admin" element={<adminPage/>} />
-        //         </Routes>
-        //     </BrowserRouter>
-        // </UserContext.Provider>
+        // <AdminPage/>
+        <UserContext.Provider value={{ UserData , setUserData }}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<LoginPage />} />
+                    <Route path="/home" element={<Homepage/>} />
+                    <Route path="/admin" element={<AdminPage/>} />
+                </Routes>
+            </BrowserRouter>
+        </UserContext.Provider>
     );
 }
 

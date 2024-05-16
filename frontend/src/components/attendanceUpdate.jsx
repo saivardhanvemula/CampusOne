@@ -1,10 +1,25 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import "./attendanceUpdate.css";
 import axios from "axios";
 
-export const UpdateAttendance = ({subject}) => {
-    const rollNumbers = ["123456871", "123456872", "123456873", "123456874", "123456875", "123456876", "123456877", "123456878", "123456879", "123456870"]
+export const UpdateAttendance = ({ subject }) => {
+    const [RollNo, setRollNo] = useState([]);
 
+    useEffect(() => {
+        getnums();
+    }, []);
+    const getnums = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/data");
+            const data = response.data;
+
+            // Extract roll numbers
+            const rollNumbers = data.map((student) => student.rollNumber);
+            setRollNo(rollNumbers);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
     const [absentees, setAbsentees] = useState([]);
     const [Date, setDate] = useState("");
     const handleUpdate = async (e) => {
@@ -23,7 +38,7 @@ export const UpdateAttendance = ({subject}) => {
                 {
                     Date: Date,
                     absentees,
-                    subject
+                    subject,
                 }
             );
             console.log("Response:", response.data);
@@ -63,7 +78,7 @@ export const UpdateAttendance = ({subject}) => {
                 onChange={handleDateChange}
             />
             <div className="list">
-                {rollNumbers.map((n) => (
+                {RollNo.map((n) => (
                     <span
                         key={n}
                         className={
