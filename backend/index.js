@@ -13,23 +13,22 @@ const client = new MongoClient(uri);
 app.get("/", async (req, res) => {
     res.send("Welcome to ToDos API");
 });
+
+//login api
 app.post("/login", async (req, res) => {
     try {
-        await client.connect();
+        client.connect();
         const { email, password } = req.body;
         const database = client.db("students");
         const collection = database.collection("details");
-        // console.log("Received login request:", req.body);
-        // console.log(req.body)
         const user = await collection.findOne({
             email: email,
             password: password,
-        });  
-        console.log(user)
+        });
         if (user) {
-            res.json({ user:user});
+            res.json({ user: user });
         } else {
-            res.json({ user:user});
+            res.json({ user: user });
         }
         await client.close();
     } catch (error) {
@@ -38,6 +37,26 @@ app.post("/login", async (req, res) => {
     }
 });
 
+//notes api
+app.post("/notes", async (req, res) => {
+    try {
+        client.connect()
+        const { date,subject } = req.body;
+        const database = client.db("students");
+        const collection = database.collection("notes");
+        const notes = await collection.findOne({
+            date:date,
+            subject:{$exists :true}
+        })
+        console.log(date,subject);
+        console.log(notes)
+        res.json({notes:notes})
+        await client.close()
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        res.status(500).json({ error: "Server error" });
+    }
+});
 app.listen(port, () => {
     console.log(`Server running on PORT: ${port}`);
 });

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./DownloadNotes.css";
+import axios from "axios";
 const NotesDownloader = () => {
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedSubject, setSelectedSubject] = useState("");
@@ -11,32 +12,50 @@ const NotesDownloader = () => {
     const handleSubjectChange = (event) => {
         setSelectedSubject(event.target.value);
     };
+    function openInNewTab(url) {
+        const newWindow = window.open(url, "_blank");
+        if (newWindow) {
+            newWindow.focus();
+        } else {
+            console.error(
+                "Failed to open the new tab. Please check your browser settings."
+            );
+        }
+    }
+    function changeDateFormat(inputDate) {
+        const parts = inputDate.split("-");
+        const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
 
-    //   const handleDownload = (subject) => {
-    //     // Logic to download the PDF notes for the selected date and subject
-    //     alert(`Downloading notes for ${selectedDate} - ${subject}`);
-    //   };
-    const handleDownload = (subject) => {
-        window.location.href = `/pdfs/notes.pdf`;
-
-        // const pdfData = localStorage.getItem("./pdfs/notes.pptx");
-
-        // if (pdfData) {
-        //     const blob = new Blob([pdfData], { type: "application/pdf" });
-
-        //     // Create a URL for the Blob
-        //     const url = window.URL.createObjectURL(blob);
-
-        //     // Create a temporary anchor element
-        //     const a = document.createElement("a");
-        //     a.href = url;
-        //     a.download = `notes_${selectedDate}_${subject}.pdf`; 
-        //     a.click();
-        //     window.URL.revokeObjectURL(url);
-        // } else {
-        //     alert("PDF data not found in local storage!");
-        // }
+        return formattedDate;
+    }
+    const handleDownload = async (subject, date) => {
+        date = changeDateFormat(date);
+        // console.log(subject);
+        try {
+            const response = await axios.post("http://localhost:5000/notes", {
+                date,
+                subject,
+            });
+            const data = response.data.notes[0];
+            console.log(data)
+            const newWindow = window.open(
+                data[subject],
+                "_blank"
+            );
+            if (newWindow) {
+                newWindow.focus();
+            } else {
+                console.error(
+                    "Failed to open the new tab. Please check your browser settings."
+                );
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            // res.status(500).json({ error: "Server error" });
+        }
     };
+    // window.location.href = `https://drive.google.com/file/d/1moQQKTErEyraRauvYf-cYd9GJMTD-BUy/view?usp=drivesdk`;
+    // console.log(`${subject} notes on ${date} is not available`)x
 
     return (
         <div>
@@ -55,15 +74,19 @@ const NotesDownloader = () => {
                 onChange={handleSubjectChange}
             >
                 <option value="">Select Subject</option>
-                <option value="Maths">Maths</option>
-                <option value="Science">Science</option>
-                <option value="History">History</option>
-                {/* Add more subjects as needed */}
+                <option value="DBMS">DBMS</option>
+                <option value="DAA">DAA</option>
+                <option value="DCCST">DCCST</option>
+                <option value="PQT">PQT</option>
+                <option value="EEA">EEA</option>
+                <option value="ES">ES</option>
             </select>
 
             {selectedSubject && (
                 <button
-                    onClick={() => handleDownload(selectedSubject)}
+                    onClick={() =>
+                        handleDownload(selectedSubject, selectedDate)
+                    }
                     disabled={!selectedDate}
                 >
                     Download Notes for {selectedSubject}

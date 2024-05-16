@@ -11,7 +11,7 @@ export const Homepage = () => {
     const { UserData, setUserData } = useContext(UserContext);
 
     const [percentage, setPercentage] = useState(0);
-    console.log(UserData);
+    // console.log(UserData);+
     if (!UserData) {
         return <div>Loading...</div>;
     }
@@ -48,10 +48,14 @@ export const Homepage = () => {
             <p style={{ color: textColor }} className="warning">
                 {warningMessage}
             </p>
-            <AbsentLog data={UserData.absenceLog} />
+            <div className="abslog">
+                <AbsentLog data={UserData.absenceLog} />
+            </div>
             {/* <AttendanceChart data={student.attendance}/> */}
             {/* <DonutChart data={[student.attendance.presentCount, student.attendance.absentCount]} /> */}
-            <NotesDownloader />
+            <div className="nts">
+                <NotesDownloader />
+            </div>
         </div>
     );
 };

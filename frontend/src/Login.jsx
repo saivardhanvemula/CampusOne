@@ -32,13 +32,8 @@ const LoginPage = () => {
             const data = response.data.user;
             setUserData(data);
             if (UserData!={}) {
-                // console.log(UserData)
-                console.log(data.user)
                 console.log("Login succesful!");
-                // setErrorMessage("Login successful!");
                 navigate("/home", { state: { userData: response.data } });
-                // setUser(response.data.user); // Store user data in context
-                // navigate("/home");
             } else {
                 setErrorMessage("Invalid credentials. Please try again.");
             }
