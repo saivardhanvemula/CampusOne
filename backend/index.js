@@ -1,12 +1,13 @@
 const express = require("express");
 const cors = require("cors");
-const { MongoClient,ObjectId} = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 
 const app = express();
 app.use(express.json());
 
 app.use(cors());
 const uri = "mongodb://localhost:27017";
+// const uri = "mongodb+srv://sai7626@bustracker.z9ztvx3.mongodb.net/";
 const port = 5000;
 const client = new MongoClient(uri);
 
@@ -72,7 +73,6 @@ app.post("/notes", async (req, res) => {
         await client.connect();
         console.log("connected");
         const { date, subject } = req.body;
-        // console.log(date,su)
         const database = client.db("students");
         const collection = database.collection("notes");
         const notes = await collection.findOne({
@@ -101,19 +101,8 @@ app.post("/UpdateAttendance", async (req, res) => {
                 .db("students")
                 .collection("details")
                 .findOne({ rollNumber: rollNumber });
-            // console.log(student)
+            console.log(student);
             if (student) {
-                // let abslog = student.absenceLog;
-                // console.log(abslog);
-                // if (abslog.some((entry) => entry.date === Date)) {
-                //     if (abslog.includes(subject)) {
-                //         console.log("subject already exsist");
-                //     }
-                //     abslog = addSubjectToDate(abslog, Date, subject);
-                // }
-                // else {
-                //     abslog.push({ date: Date, subjects: [subject] });
-                // }
                 let abslog = student.absenceLog;
                 let dateExists = false;
                 let i = 1;
@@ -151,7 +140,10 @@ app.post("/UpdateAttendance", async (req, res) => {
                             $inc: { absentCount: i },
                         }
                     );
-
+                await client
+                    .db("students")
+                    .collection("totalCls")
+                    .updateOne({}, { $inc: { totalCls: 1 } });
                 console.log(
                     `Updated absence log for roll number ${rollNumber}`
                 );

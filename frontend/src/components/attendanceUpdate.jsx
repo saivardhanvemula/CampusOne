@@ -31,6 +31,7 @@ export const UpdateAttendance = ({ subject }) => {
         console.log("Absentees:", absentees);
         // console.log(changeDateFormat(Date));
         console.log(Date);
+        alert(`The absenees on ${Date} are \n${absentees}`)
 
         try {
             const response = await axios.post(

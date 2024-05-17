@@ -8,10 +8,6 @@ import UserContext from "./UserContext";
 export const AdminPage = () => {
     const { UserData, setUserData } = useContext(UserContext);
     console.log(UserData);
-    // const adminName = 'John Doe'; // Replace with dynamic data as needed
-    // const adminDepartment = 'Computer Science'; // Replace with dynamic data as needed
-    // const subject="DBMS"
-    // const section="IT-3"
 
     return (
         <div className="adminPage">

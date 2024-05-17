@@ -16,7 +16,8 @@
     background: transparent;
 }
 .form {
-    /* background-color: red; */
+    /* background-color:; */
+
     border: 1px black solid;
     border-radius: 30px;
     box-shadow: 1px 1px 30px 1px black;
@@ -25,6 +26,12 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Adjust the pixel value for more or less blur */
+    -webkit-backdrop-filter: blur(10px); /* For better browser support */
+    border-radius: 10px; /* Optional: for rounded corners */
+    padding: 20px; /* Optional: for some inner padding */
+    border: 1px solid rgba(255, 255, 255, 0.3); 
 }
 .form form {
     display: flex;
@@ -44,7 +51,7 @@
     scale: 1.05;
     transition: ease-out 100ms;
     background-color: #60a091;
-    box-shadow: 0px 0px 5px 3px black;
+    box-shadow: 0px 0px 10px 1px black;
 }
 .form label {
     font-size: 2rem;
@@ -64,6 +71,11 @@
     box-shadow: inset 0px 0px 1px 1px black;
     font-family: "Times New Roman", Times, serif;
 }
+.userinput input::placeholder,.passinput input::placeholder {
+    color:#3A3A3A; /* Change this to your desired color */
+    opacity: 1; /* Ensure the color is fully opaque (1) */
+}
+
 .userinput,
 .passinput {
     display: flex;
@@ -72,12 +84,16 @@
 form p {
     margin: 0;
     padding: 0;
-    color: red;
+    color:#71bcaa;
+    /* color: #60A091; */
+    cursor: pointer;
+    /* background-color: antiquewhite; */
     /* box-shadow: 0 0 1px 1px black; */
 }
 .showpass{
     height: 20px;
     width: 20px;
+    cursor: pointer;
 }
 .admin-text p{
     color: white;
