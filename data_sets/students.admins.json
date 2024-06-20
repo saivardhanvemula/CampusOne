@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "6644d96fee245571fa7db5c1"
+  },
+  "name": "Shiva",
+  "department": "IT",
+  "section": "it-3",
+  "email": "shiva@cbit",
+  "password": "123",
+  "subject": "DAA"
+}]

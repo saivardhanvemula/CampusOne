@@ -1,0 +1,374 @@
+[{
+  "_id": {
+    "$oid": "6645dfac7785f74e7446adf0"
+  },
+  "name": "Krishna Anirudh",
+  "rollNumber": "123456878",
+  "email": "krishna.anirudh@example.com",
+  "password": "password123",
+  "absentCount": 20,
+  "absenceLog": [
+    {
+      "date": "2024-05-01",
+      "subjects": [
+        "PQT",
+        "ES"
+      ]
+    },
+    {
+      "date": "2024-05-03",
+      "subjects": [
+        "DCCST"
+      ]
+    },
+    {
+      "date": "2024-05-05",
+      "subjects": [
+        "DBMS",
+        "DCCST",
+        "ES"
+      ]
+    },
+    {
+      "date": "2024-05-17",
+      "subjects": [
+        "DBMS"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6645dfac7785f74e7446adf1"
+  },
+  "name": "Ravi Kumar",
+  "rollNumber": "123456879",
+  "email": "ravi.kumar@example.com",
+  "password": "password123",
+  "absentCount": 22,
+  "absenceLog": [
+    {
+      "date": "2024-05-02",
+      "subjects": [
+        "DCCST",
+        "PQT"
+      ]
+    },
+    {
+      "date": "2024-05-04",
+      "subjects": [
+        "DBMS"
+      ]
+    },
+    {
+      "date": "2024-05-06",
+      "subjects": [
+        "DBMS",
+        "DCCST"
+      ]
+    },
+    {
+      "date": "2024-05-17",
+      "subjects": [
+        "DBMS",
+        "DAA"
+      ]
+    },
+    {
+      "date": "2024-05-16",
+      "subjects": [
+        "DAA"
+      ]
+    },
+    {
+      "date": "2024-05-18",
+      "subjects": [
+        "DAA"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6645dfac7785f74e7446adf2"
+  },
+  "name": "Sai Vardhan",
+  "rollNumber": "123456880",
+  "email": "123",
+  "password": "123",
+  "absentCount": 15,
+  "absenceLog": [
+    {
+      "date": "2024-05-03",
+      "subjects": [
+        "DBMS",
+        "DAA"
+      ]
+    },
+    {
+      "date": "2024-05-05",
+      "subjects": [
+        "DCCST"
+      ]
+    },
+    {
+      "date": "2024-05-07",
+      "subjects": [
+        "DAA"
+      ]
+    },
+    {
+      "date": "2024-05-09",
+      "subjects": [
+        "DBMS",
+        "PQT"
+      ]
+    },
+    {
+      "date": "2024-05-11",
+      "subjects": [
+        "DAA",
+        "DCCST"
+      ]
+    },
+    {
+      "date": "2024-05-13",
+      "subjects": [
+        "DAA",
+        "PQT"
+      ]
+    },
+    {
+      "date": "2024-05-15",
+      "subjects": [
+        "PQT"
+      ]
+    },
+    {
+      "date": "2024-05-17",
+      "subjects": [
+        "DBMS",
+        "DAA"
+      ]
+    },
+    {
+      "date": "2024-05-19",
+      "subjects": [
+        "DBMS",
+        "DCCST"
+      ]
+    },
+    {
+      "date": "2024-05-21",
+      "subjects": [
+        "PQT",
+        "ES"
+      ]
+    },
+    {
+      "date": "2024-05-23",
+      "subjects": [
+        "DBMS",
+        "PQT"
+      ]
+    },
+    {
+      "date": "2024-05-25",
+      "subjects": [
+        "DBMS",
+        "DAA"
+      ]
+    },
+    {
+      "date": "2024-05-27",
+      "subjects": [
+        "DCCST",
+        "ES"
+      ]
+    },
+    {
+      "date": "2024-05-29",
+      "subjects": [
+        "DAA",
+        "PQT"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6645dfac7785f74e7446adf3"
+  },
+  "name": "Mohan Das",
+  "rollNumber": "123456881",
+  "email": "mohan.das@example.com",
+  "password": "password123",
+  "absentCount": 10,
+  "absenceLog": [
+    {
+      "date": "2024-05-01",
+      "subjects": [
+        "DCCST",
+        "PQT"
+      ]
+    },
+    {
+      "date": "2024-05-06",
+      "subjects": [
+        "DBMS",
+        "PQT"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6645dfac7785f74e7446adf4"
+  },
+  "name": "Priya Singh",
+  "rollNumber": "123456882",
+  "email": "priya.singh@example.com",
+  "password": "password123",
+  "absentCount": 30,
+  "absenceLog": [
+    {
+      "date": "2024-05-02",
+      "subjects": [
+        "ES",
+        "DCCST"
+      ]
+    },
+    {
+      "date": "2024-05-07",
+      "subjects": [
+        "DBMS"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6645dfac7785f74e7446adf5"
+  },
+  "name": "Rahul Verma",
+  "rollNumber": "123456883",
+  "email": "rahul.verma@example.com",
+  "password": "password123",
+  "absentCount": 40,
+  "absenceLog": [
+    {
+      "date": "2024-05-04",
+      "subjects": [
+        "DBMS"
+      ]
+    },
+    {
+      "date": "2024-05-08",
+      "subjects": [
+        "PQT",
+        "ES"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6645dfac7785f74e7446adf6"
+  },
+  "name": "Neha Patel",
+  "rollNumber": "123456884",
+  "email": "neha.patel@example.com",
+  "password": "password123",
+  "absentCount": 18,
+  "absenceLog": [
+    {
+      "date": "2024-05-02",
+      "subjects": [
+        "DAA",
+        "PQT"
+      ]
+    },
+    {
+      "date": "2024-05-06",
+      "subjects": [
+        "DBMS",
+        "DCCST"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6645dfac7785f74e7446adf7"
+  },
+  "name": "Amit Gupta",
+  "rollNumber": "123456885",
+  "email": "amit.gupta@example.com",
+  "password": "password123",
+  "absentCount": 22,
+  "absenceLog": [
+    {
+      "date": "2024-05-01",
+      "subjects": [
+        "ES"
+      ]
+    },
+    {
+      "date": "2024-05-07",
+      "subjects": [
+        "DAA",
+        "DCCST"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6645dfac7785f74e7446adf8"
+  },
+  "name": "Sunita Rai",
+  "rollNumber": "123456886",
+  "email": "sunita.rai@example.com",
+  "password": "password123",
+  "absentCount": 12,
+  "absenceLog": [
+    {
+      "date": "2024-05-03",
+      "subjects": [
+        "PQT",
+        "DAA"
+      ]
+    },
+    {
+      "date": "2024-05-05",
+      "subjects": [
+        "DCCST"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6645dfac7785f74e7446adf9"
+  },
+  "name": "Vikram Chawla",
+  "rollNumber": "123456887",
+  "email": "vikram.chawla@example.com",
+  "password": "password123",
+  "absentCount": 35,
+  "absenceLog": [
+    {
+      "date": "2024-05-04",
+      "subjects": [
+        "ES",
+        "DAA"
+      ]
+    },
+    {
+      "date": "2024-05-08",
+      "subjects": [
+        "DBMS"
+      ]
+    }
+  ]
+}]

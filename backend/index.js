@@ -4,12 +4,16 @@ const { MongoClient, ObjectId } = require("mongodb");
 
 const app = express();
 app.use(express.json());
-
 app.use(cors());
+const port = 5000;
+
 const uri = "mongodb://localhost:27017";
 // const uri = "mongodb+srv://sai7626@bustracker.z9ztvx3.mongodb.net/";
-const port = 5000;
 const client = new MongoClient(uri);
+app.get("/",async(req,res)=>{
+    await client.connect();
+    res.status(200).json({ data: "DataBase connected" });
+});
 
 app.get("/data", async (req, res) => {
     try {
@@ -27,7 +31,6 @@ app.get("/data", async (req, res) => {
 
 app.get("/total", async (req, res) => {
     try {
-        await client.connect();
         const database = client.db("students");
         const collection = database.collection("cls");
         const totalClsCursor = collection.find(
